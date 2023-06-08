@@ -5,11 +5,18 @@ import { Link, useNavigate } from 'react-router-dom';
 // import { Helmet } from 'react-helmet';
 import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
+import { app } from '../../firebase/firebase.config';
+import { FaGoogle } from 'react-icons/fa';
 
 const Reg = () => {
+    const auth = getAuth(app);
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
     const { createUser, update } = useContext(AuthContext);
     const navigate = useNavigate();
+    console.log("login page location", location);
+    const from = location.state?.from?.pathname || "/";
+    const googleProvider = new GoogleAuthProvider();
     const [error, setError] = useState('');
     const password = useRef({});
     password.current = watch("password", "");
@@ -44,6 +51,17 @@ const Reg = () => {
                 }
             });
     };
+    const handleGoogleSignIn = () => {
+        signInWithPopup(auth, googleProvider)
+          .then(result => {
+            const loggedInUser = result.user;
+            console.log(loggedInUser);
+            navigate(from, { replace: true });
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      };
     const backgroundImage =
         "https://i.postimg.cc/JhbDNKc4/top-view-desk-concept-with-musical-theme-23-2148282049.jpg";
 
@@ -128,6 +146,13 @@ const Reg = () => {
                                 {error && (
                                     <p className="text-red-600 mb-2">{error}</p>
                                 )}
+                                 <p className="text-center mt-2">-----------or---------</p>
+                  <button
+                    onClick={handleGoogleSignIn}
+                    className="btn btn-primary bg-cyan-800 border-0 w-full my-3"
+                  >
+                    <FaGoogle className="mx-2" /> Login with Google
+                  </button>
                             </form>
                             <p><small className='ml-4 mb-3'>Already have an account <Link to="/login" className='text-blue-700'>Login</Link></small></p>
                         </div>

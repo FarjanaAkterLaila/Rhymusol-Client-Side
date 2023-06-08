@@ -25,7 +25,7 @@ const navItems = (
     </li>
 
     <li className="font-bold text-lg">
-      <Link to="/blog">Classes</Link>
+      <Link to="/classes">Classes</Link>
     </li>
     
     
@@ -88,7 +88,7 @@ return (
           </ul>
         </div>
         <img className="h-16 w-18 rounded-lg" src="https://i.ibb.co/BzbyPdt/pngtree-color-music-logo-png-image-6541033.png" alt="" />
-        <h1 className="font-bold text-orange-700 text-2xl ">
+        <h1 className="font-bold text-orange-700 text-4xl ">
         Rhy<span className="text-black">Musol</span>
         </h1>
       </div>
