@@ -3,7 +3,7 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 import { useContext } from "react";
 import { Tooltip } from "react-tooltip";
 //import { Tooltip } from "react-tooltip";
-
+import { BsFillCartCheckFill } from "react-icons/bs";
 
 const NavBarIteam = () => {
 
@@ -31,11 +31,9 @@ const navItems = (
     
     { user?.email ?  <>
       <li className="font-bold">
-      <Link to="/addtoy">Add Toys</Link>
+      <Link to="/addtoy"><BsFillCartCheckFill style={{fontSize:'2rem'}}></BsFillCartCheckFill></Link>
     </li>
-    <li className="font-bold">
-      <Link to="/mytoy">My Toys</Link>
-    </li>
+   
           
       </> 
       : <li> </li>
@@ -61,6 +59,7 @@ const navItems = (
   </>
 );
 return (
+  <div>
   <div className=" navbar z-10 fixed bg-opacity-70  bg-white text-black ">
     <div className=" max-w-7xl mx-auto navbar h-20 mb-0">
       <div className="navbar-start">
@@ -90,7 +89,7 @@ return (
         </div>
         <img className="h-16 w-18 rounded-lg" src="https://i.ibb.co/BzbyPdt/pngtree-color-music-logo-png-image-6541033.png" alt="" />
         <h1 className="font-bold text-orange-700 text-2xl ">
-        Rhythmia<p className="text-black lg:text-lg text-sm">MusicalSchool</p>
+        Rhy<span className="text-black">Musol</span>
         </h1>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -137,6 +136,7 @@ return (
         )} 
        </div> 
     </div>
+  </div>
   </div>
 );
 };

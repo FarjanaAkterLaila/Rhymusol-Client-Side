@@ -5,8 +5,8 @@ const Footer = () => {
       <div className="footer p-10 bg-base-200 text-base-content">
         <div>
           <img className="w-20 h-20" src="https://i.ibb.co/BzbyPdt/pngtree-color-music-logo-png-image-6541033.png" alt="" />
-          <p className="font-bold text-orange-700 text-3xl">Rhythmia<br />
-          <span className="text-black text-lg">Musical School</span></p>
+          <p className="font-bold text-orange-700 text-3xl">Rhy
+          <span className="text-black">Musol</span></p>
             <p className="link link-hover text-black text-sm  ">39/8, Bandor ,Chattogram</p>
            
            
@@ -33,7 +33,7 @@ const Footer = () => {
         <div>
           <span className="footer-title font-bold text-orange-700 text-xl">Contact Us</span>
           <a className="link link-hover text-black text-sm">Phone: +880 01758933214</a>
-          <a className="link link-hover text-black text-sm">Email:Rhythmia@gmail.com</a>
+          <a className="link link-hover text-black text-sm">Email:RhyMusol@gmail.com</a>
         </div>
         <div>
           <span className="footer-title font-bold text-orange-700 text-xl">Social</span>
@@ -60,7 +60,7 @@ const Footer = () => {
       </div>
       <div className="footer footer-center p-4 bg-base-300 text-base-content">
         <div>
-          <p > © Copyright Rhythmia. All Rights Reserved</p>
+          <p > © Copyright RhyMusol. All Rights Reserved</p>
         </div>
       </div>
     </footer>
