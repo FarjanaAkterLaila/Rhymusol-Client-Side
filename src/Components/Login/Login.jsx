@@ -60,12 +60,12 @@ const Login = () => {
 
   return (
     <div>
-      <div className="hero py-10">
+      <div className="hero">
         <div
           style={{ backgroundImage: `url(${backgroundImage})` }}
           className="hero min-h-screen max-w-screen"
         >
-          <div className="hero-content flex-col-reverse gap-0 rounded-lg shadow-2xl w-full lg:flex-row-reverse">
+          <div className=" hero-content pt-12 flex-col-reverse gap-0 rounded-lg shadow-2xl w-full lg:flex-row-reverse">
             <div className="mx-5 opacity-90">
               <img
                 src="https://i.ibb.co/tPHgzvD/online-registration-sign-up-with-man-sitting-near-smartphone-268404-95.jpg"

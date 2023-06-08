@@ -51,7 +51,7 @@ const Reg = () => {
 
 
         <div>
-            <div className="hero py-10">
+            <div className="hero">
                 <div
                     style={{ backgroundImage: `url(${backgroundImage})` }}
                     className="hero min-h-screen max-w-screen"
