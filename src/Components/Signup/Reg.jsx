@@ -5,40 +5,53 @@ import { Link, useNavigate } from 'react-router-dom';
 // import { Helmet } from 'react-helmet';
 import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
-import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
-import { app } from '../../firebase/firebase.config';
-import { FaGoogle } from 'react-icons/fa';
+import GoogleSing from '../Shared/Google/GoogleSing';
 
 const Reg = () => {
-    const auth = getAuth(app);
+ 
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
     const { createUser, update } = useContext(AuthContext);
     const navigate = useNavigate();
     console.log("login page location", location);
-    const from = location.state?.from?.pathname || "/";
-    const googleProvider = new GoogleAuthProvider();
+    const from =  location.state?.from?.state?.from?.pathname || "/";
+ console.log(from)
     const [error, setError] = useState('');
     const password = useRef({});
     password.current = watch("password", "");
+    
+  
     const onSubmit = data => {
         console.log(data);
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                
+                
                 update(data.name, data.photoURL)
-                    .then(() => {
-                        console.log('user profile info updated');
-                        reset();
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'User created successfully.',
-                            showConfirmButton: false,
-                            timer: 1500
-                        }).then(() => {
-                            navigate('/');
-                        });
+                    .then(() =>{
+                        const saveUser = { name: data.name, email: data.email }
+                        fetch('http://localhost:5000/user', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    reset();
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'User created successfully.',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate(from, { replace: true });
+                                }
+                            })
                     })
                     .catch(error => console.log(error));
             })
@@ -51,17 +64,9 @@ const Reg = () => {
                 }
             });
     };
-    const handleGoogleSignIn = () => {
-        signInWithPopup(auth, googleProvider)
-          .then(result => {
-            const loggedInUser = result.user;
-            console.log(loggedInUser);
-            navigate(from, { replace: true });
-          })
-          .catch(error => {
-            console.log(error);
-          });
-      };
+   
+   
+ 
     const backgroundImage =
         "https://i.postimg.cc/JhbDNKc4/top-view-desk-concept-with-musical-theme-23-2148282049.jpg";
 
@@ -146,13 +151,7 @@ const Reg = () => {
                                 {error && (
                                     <p className="text-red-600 mb-2">{error}</p>
                                 )}
-                                 <p className="text-center mt-2">-----------or---------</p>
-                  <button
-                    onClick={handleGoogleSignIn}
-                    className="btn btn-primary bg-cyan-800 border-0 w-full my-3"
-                  >
-                    <FaGoogle className="mx-2" /> Login with Google
-                  </button>
+                                <GoogleSing></GoogleSing>
                             </form>
                             <p><small className='ml-4 mb-3'>Already have an account <Link to="/login" className='text-blue-700'>Login</Link></small></p>
                         </div>

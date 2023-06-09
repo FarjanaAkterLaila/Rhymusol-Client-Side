@@ -10,6 +10,9 @@ import Errorpage from "../Errorpage/Errorpage";
 import Classes from "../Components/Classes/Classes";
 import Dashboard from "../Layout/Dashboard";
 import Myadditem from "../Components/Dashboard/Myadditem";
+import Enrollcls from "../Components/Dashboard/Enrollcls";
+import Pay from "../Components/Dashboard/Pay";
+import PrivateRoute from "./PrivateRoute";
   
   export const router = createBrowserRouter([
     {
@@ -38,11 +41,19 @@ import Myadditem from "../Components/Dashboard/Myadditem";
     },
     {
       path:'dashboard',
-      element:<Dashboard></Dashboard>,
+      element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children:[
 {
   path:'myadditeam',
   element:<Myadditem></Myadditem>
+},
+{
+  path:'enrollcls',
+  element:<Enrollcls/>
+},
+{
+  path:'pay',
+  element:<Pay/>
 }
       ]
     }

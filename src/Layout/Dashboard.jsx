@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import { MdAddShoppingCart } from "react-icons/md";
 import { SiGoogleclassroom } from "react-icons/si";
 import { FaWallet } from "react-icons/fa";
@@ -18,20 +18,20 @@ const Dashboard = () => {
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
           <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content text-xl font-bold">
        
-            <li className='pt-20'><Link><MdAddShoppingCart/>Selected Classes</Link></li>
-            <li><Link><SiGoogleclassroom/>Enrolled Classes</Link></li>
-            <li><Link><FaWallet/>Payment</Link></li>
+            <li className='pt-20'><NavLink to="/dashboard/myadditeam" className={'text-orange-700'} ><MdAddShoppingCart/>Selected Classes</NavLink></li>
+            <li><NavLink to="/dashboard/enrollcls" className={'text-orange-700'} ><SiGoogleclassroom/>Enrolled Classes</NavLink></li>
+            <li><NavLink to="/dashboard/pay" className={'text-orange-700'} ><FaWallet/>Payment</NavLink></li>
             <div className='divider'></div>
-            <li className="font-bold text-lg">
-      <Link to="/"><FcHome/>Home</Link>{" "}
+            <li className="font-bold text-lg ">
+      <NavLink to="/" className={'text-orange-700'}><FcHome/>Home</NavLink>{" "}
     </li>
     <li className="font-bold text-lg">
       {" "}
-      <Link to="/alltoys"><GiTeacher/>Instructors</Link>{" "}
+      <NavLink to="/alltoys" className={'text-orange-700'}><GiTeacher/>Instructors</NavLink>{" "}
     </li>
 
     <li className="font-bold text-lg">
-      <Link to="/classes"><SiGoogleclassroom/>Classes</Link>
+      <NavLink to="/classes" className={'text-orange-700'}><SiGoogleclassroom/>Classes</NavLink>
     </li>
           </ul>
         

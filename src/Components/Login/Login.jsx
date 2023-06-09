@@ -1,21 +1,21 @@
-import React, { useContext, useState } from "react";
-import { app } from "../../firebase/firebase.config";
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { useContext, useState } from "react";
+
+
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
-import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import GoogleSing from "../Shared/Google/GoogleSing";
 
 const Login = () => {
   
-  const auth = getAuth(app);
   const { signIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   console.log("login page location", location);
   const from = location.state?.from?.pathname || "/";
-  const googleProvider = new GoogleAuthProvider();
+
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -43,17 +43,7 @@ const Login = () => {
       });
   };
 
-  const handleGoogleSignIn = () => {
-    signInWithPopup(auth, googleProvider)
-      .then(result => {
-        const loggedInUser = result.user;
-        console.log(loggedInUser);
-        navigate(from, { replace: true });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
+ 
 
   const backgroundImage =
     "https://i.postimg.cc/JhbDNKc4/top-view-desk-concept-with-musical-theme-23-2148282049.jpg";
@@ -129,13 +119,7 @@ const Login = () => {
                       value="Login"
                     />
                   </div>
-                  <p className="text-center mt-2">-----------or---------</p>
-                  <button
-                    onClick={handleGoogleSignIn}
-                    className="btn btn-primary bg-cyan-800 border-0 w-full my-3"
-                  >
-                    <FaGoogle className="mx-2" /> Login with Google
-                  </button>
+                 <GoogleSing></GoogleSing>
                 </form>
                 {error && (
                   <p className="text-red-600 font-bold">{error}</p>
