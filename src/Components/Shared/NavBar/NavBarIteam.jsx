@@ -4,9 +4,11 @@ import { useContext } from "react";
 import { Tooltip } from "react-tooltip";
 //import { Tooltip } from "react-tooltip";
 import { BsFillCartCheckFill } from "react-icons/bs";
+import CardHook from "../../Hook/CardHook";
 
 const NavBarIteam = () => {
-
+const [card]= CardHook();
+console.log(card.length)
   const { user, logOut } = useContext(AuthContext);
 //console.log(user.photoURL);
   const handleLogOut = () => {
@@ -31,7 +33,9 @@ const navItems = (
     
     { user?.email ?  <>
       <li className="font-bold">
-      <Link to="/addtoy"><BsFillCartCheckFill style={{fontSize:'2rem'}}></BsFillCartCheckFill></Link>
+      <Link to="/dashboard/myadditeam"><BsFillCartCheckFill style={{fontSize:'2rem'}}>
+        
+        </BsFillCartCheckFill><div className="bg-orange-300 text-black text-lg rounded-lg px-2">+{card?.length || 0}</div></Link>
     </li>
    
           

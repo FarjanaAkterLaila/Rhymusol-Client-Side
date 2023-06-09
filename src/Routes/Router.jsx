@@ -7,7 +7,9 @@ import Home from "../Components/Home/Home";
 import Login from "../Components/Login/Login";
 import Reg from "../Components/Signup/Reg";
 import Errorpage from "../Errorpage/Errorpage";
-import Classes from "../Classes/Classes";
+import Classes from "../Components/Classes/Classes";
+import Dashboard from "../Layout/Dashboard";
+import Myadditem from "../Components/Dashboard/Myadditem";
   
   export const router = createBrowserRouter([
     {
@@ -31,6 +33,17 @@ import Classes from "../Classes/Classes";
           path:'/reg',
           element:<Reg></Reg>
         }
-      ]
+      ],
+   
     },
+    {
+      path:'dashboard',
+      element:<Dashboard></Dashboard>,
+      children:[
+{
+  path:'myadditeam',
+  element:<Myadditem></Myadditem>
+}
+      ]
+    }
   ]);
