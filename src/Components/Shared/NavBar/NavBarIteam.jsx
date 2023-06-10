@@ -4,7 +4,8 @@ import { useContext } from "react";
 import { Tooltip } from "react-tooltip";
 //import { Tooltip } from "react-tooltip";
 import { BsFillCartCheckFill } from "react-icons/bs";
-import CardHook from "../../Hook/CardHook";
+import CardHook from "../../../Hook/CardHook";
+
 
 const NavBarIteam = () => {
 const [card]= CardHook();

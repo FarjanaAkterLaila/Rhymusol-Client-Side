@@ -13,6 +13,8 @@ import Myadditem from "../Components/Dashboard/Myadditem";
 import Enrollcls from "../Components/Dashboard/Enrollcls";
 import Pay from "../Components/Dashboard/Pay";
 import PrivateRoute from "./PrivateRoute";
+import ManageClasses from "../Components/Dashboard/ManageClasses";
+import ManageUsers from "../Components/Dashboard/ManageUsers";
   
   export const router = createBrowserRouter([
     {
@@ -54,6 +56,14 @@ import PrivateRoute from "./PrivateRoute";
 {
   path:'pay',
   element:<Pay/>
+},
+{
+  path:'manageclasses',
+  element:<ManageClasses/>
+},
+{
+  path:'manageuser',
+  element:<ManageUsers/>
 }
       ]
     }

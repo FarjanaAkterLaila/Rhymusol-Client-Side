@@ -4,7 +4,8 @@ import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import 'animate.css';
 import { AuthContext } from "../../Providers/AuthProvider";
-import CardHook from "../Hook/CardHook";
+import CardHook from "../../Hook/CardHook";
+
 
 const Card = ({item}) => {
     const {user}=useContext(AuthContext);

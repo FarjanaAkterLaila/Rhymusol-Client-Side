@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import React, { useContext } from 'react';
-import { AuthContext } from '../../Providers/AuthProvider';
+import { AuthContext } from '../Providers/AuthProvider';
+
 
 const CardHook = () => {
     const { user } = useContext(AuthContext);

@@ -74,14 +74,14 @@ const Reg = () => {
 
 
         <div>
-            <div className="hero">
+            <div className="hero mb-8">
                 <div
                     style={{ backgroundImage: `url(${backgroundImage})` }}
                     className="hero min-h-screen max-w-screen"
                 >
                     <div className="hero-content flex-col-reverse gap-0 rounded-lg shadow-2xl w-full lg:flex-row-reverse">
 
-                        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                        <div className="card flex-shrink-0 mt-12 w-full max-w-lg shadow-2xl bg-base-100">
                             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                                 <h1 className="text-3xl text-center font-bold">SignUp</h1>
                                 <div className="form-control">
