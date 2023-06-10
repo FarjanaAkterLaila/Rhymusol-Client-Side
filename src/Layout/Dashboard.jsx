@@ -1,17 +1,21 @@
-import React from 'react';
+
 import { NavLink, Outlet } from 'react-router-dom';
 import { MdAddShoppingCart } from "react-icons/md";
 import { SiGoogleclassroom } from "react-icons/si";
 import { FaUsers, FaWallet } from "react-icons/fa";
 import { FcHome } from "react-icons/fc";
 import { GiTeacher } from "react-icons/gi";
+import { ImBoxAdd } from "react-icons/im";
 import CardHook from '../Hook/CardHook';
+import Admin from '../Hook/Admin';
+import UInstructor from '../Hook/UInstructor';
 const Dashboard = () => {
   const [card] = CardHook();
 
-  // Todo........
-  const isAdmin = true;
   
+  const [isAdmin] = Admin();
+  const [instructor] = UInstructor();
+  //console.log(isAdmin,instructor)
   return (
     <div className="drawer lg:drawer-open font-serif">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -33,6 +37,18 @@ const Dashboard = () => {
               
               <li>
                 <NavLink to="/dashboard/manageuser" className={'text-orange-700'} ><FaUsers />Manage Users</NavLink>
+                </li>
+              
+           
+            </> :
+            instructor ? <>
+              <li className='pt-20'>
+                <NavLink to="/dashboard/addcls" className={'text-orange-700'} ><ImBoxAdd/>Add Class</NavLink>
+                
+                </li>
+              
+              <li>
+                <NavLink to="/dashboard/mycls" className={'text-orange-700'} ><FaUsers />My Class</NavLink>
                 </li>
               
            

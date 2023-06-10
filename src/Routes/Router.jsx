@@ -15,6 +15,8 @@ import Pay from "../Components/Dashboard/Pay";
 import PrivateRoute from "./PrivateRoute";
 import ManageClasses from "../Components/Dashboard/ManageClasses";
 import ManageUsers from "../Components/Dashboard/ManageUsers";
+import Addclass from "../Components/Dashboard/Addclass";
+import Mycls from "../Components/Dashboard/Mycls";
   
   export const router = createBrowserRouter([
     {
@@ -64,6 +66,14 @@ import ManageUsers from "../Components/Dashboard/ManageUsers";
 {
   path:'manageuser',
   element:<ManageUsers/>
+},
+{
+  path:'addcls',
+  element:<Addclass/>
+},
+{
+  path:'mycls',
+  element:<Mycls/>
 }
       ]
     }

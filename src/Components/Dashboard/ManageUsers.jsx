@@ -2,13 +2,21 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { FaTrashAlt, FaUserShield } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import AxioSe from '../../Hook/AxioSe';
 
 const ManageUsers = () => {
-  const { data: users = [], refetch } = useQuery(['user'], async () => {
-    const res = await fetch('http://localhost:5000/user');
-    return res.json();
-  });
-
+//     const token = localStorage.getItem('access-token');
+//   const { data: users = [], refetch } = useQuery(['user'], async () => {
+//     const res = await fetch('http://localhost:5000/user', { headers: {
+//         authorization: `bearer ${token}`
+//     }});
+//     return res.json();
+//   });
+const [axiosSecure] = AxioSe();
+const { data: users = [], refetch } = useQuery(['user'], async () => {
+    const res = await axiosSecure.get('/user')
+    return res.data;
+})
   const [selectedUsers, setSelectedUsers] = useState([]); 
 
   const handleMakeAdmin = (user) => {
@@ -59,7 +67,7 @@ const ManageUsers = () => {
       });
   };
 
-  const handleDelete = (user) => {
+  const handleDelete = (item) => {
     // Implement the delete functionality
   };
 
