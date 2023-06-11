@@ -2,19 +2,54 @@ import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
 import CardHook from '../../Hook/CardHook';
 import { AuthContext } from '../../Providers/AuthProvider';
+import AxioSe from '../../Hook/AxioSe';
+import Swal from 'sweetalert2';
 // onSubmit={handleSubmit(onSubmit)}
 const img_hosting_key = import.meta.env.VITE_Image_Upload
 const Addclass = () => {
+  const [axiosSecure] = AxioSe();
     const { user } = useContext(AuthContext);
   
-    const { register, handleSubmit, formState:{errors} } = useForm();
-    const img_hosting_url = `https://api.imgbb.com/1/upload?expiration=600&key=${img_hosting_key}`
+    const { register, handleSubmit,  reset } = useForm();
+    const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
     const onSubmit = data => {
-      
-console.log(data);
+      console.log(data)
+      const formData = new FormData();
+      formData.append('image', data.Image[0])
+
+      fetch(img_hosting_url, {
+          method: 'POST',
+          body: formData
+      })
+      .then(res => res.json())
+      .then(imgResponse => {
+        console.log(imgResponse)
+          if(imgResponse.success){
+              const imgURL = imgResponse.data.display_url;
+              console.log(data,imgURL)
+              const {Name, InstructorName,Price,InstactorEmail, AvailableSeats} = data;
+              const newItem = {Name,InstructorName,InstactorEmail,Price: parseFloat(Price), AvailableSeats: parseFloat(AvailableSeats), Image:imgURL}
+              console.log(newItem)
+              axiosSecure.post('/classes', newItem)
+              .then(data => {
+                  console.log('after posting new menu item', data.data)
+                  if(data.data.insertedId){
+                      reset();
+                      Swal.fire({
+                          position: 'top-end',
+                          icon: 'success',
+                          title: 'Item added successfully',
+                          showConfirmButton: false,
+                          timer: 1500
+                        })
+                  }
+              })
+          }
+      })
+
     }
-    console.log(img_hosting_key)
-    console.log(errors);
+    //console.log(img_hosting_key)
+    //console.log(errors);
     return (
         <div className='w-full px-10 '>
             <div className="uppercase font-semibold h-[60px] flex justify-evenly items-center">
