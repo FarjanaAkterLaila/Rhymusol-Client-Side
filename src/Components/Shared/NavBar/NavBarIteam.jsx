@@ -8,6 +8,7 @@ import CardHook from "../../../Hook/CardHook";
 
 
 const NavBarIteam = () => {
+  
 const [card]= CardHook();
 console.log(card.length)
   const { user, logOut } = useContext(AuthContext);
@@ -34,7 +35,7 @@ const navItems = (
     
     { user?.email ?  <>
       <li className="font-bold">
-      <Link to="/dashboard/myadditeam"><BsFillCartCheckFill style={{fontSize:'2rem'}}>
+      <Link to="/dashboard"><BsFillCartCheckFill style={{fontSize:'2rem'}}>
         
         </BsFillCartCheckFill><div className="bg-orange-300 text-black text-lg rounded-lg px-2">+{card?.length || 0}</div></Link>
     </li>

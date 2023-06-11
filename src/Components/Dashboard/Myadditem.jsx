@@ -2,6 +2,7 @@ import { FaTrashAlt } from "react-icons/fa";
 
 import Swal from "sweetalert2";
 import CardHook from "../../Hook/CardHook";
+import { Link } from "react-router-dom";
 
 
 
@@ -83,7 +84,7 @@ const Myadditem = () => {
                             <td >{item.AvailableSeats}</td>
                             <td >${item.Price}</td>
                             <td>
-                            <button className="btn btn-error btn-sm">PAY</button>
+                           <Link to = {`/dashboard/payment/${item._id}`} ><button className="btn btn-error btn-sm">PAY</button></Link>
                             </td>
                             <td>
                                 <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-orange-600  text-white"><FaTrashAlt></FaTrashAlt></button>

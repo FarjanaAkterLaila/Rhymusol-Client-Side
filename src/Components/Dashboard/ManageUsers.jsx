@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
-import { FaTrashAlt, FaUserShield } from 'react-icons/fa';
+import  { useState } from 'react';
+import { FaTrashAlt} from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import AxioSe from '../../Hook/AxioSe';
 
@@ -68,6 +68,7 @@ const { data: users = [], refetch } = useQuery(['user'], async () => {
   };
 
   const handleDelete = (item) => {
+    console.log(item)
     // Implement the delete functionality
   };
 

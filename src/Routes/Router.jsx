@@ -19,6 +19,7 @@ import Addclass from "../Components/Dashboard/Addclass";
 import Mycls from "../Components/Dashboard/Mycls";
 import AdminRoute from "./AdminRoute";
 import Instructor from "./Instructor";
+import Payment from "../Components/Dashboard/Payment/Payment";
   
   export const router = createBrowserRouter([
     {
@@ -60,6 +61,11 @@ import Instructor from "./Instructor";
 {
   path:'pay',
   element:<Pay/>
+},
+{
+  path:'payment/:id',
+  element:<Payment/>,
+  loader: ({params}) =>fetch(`http://localhost:5000/addcard/${params.id}`)
 },
 {
   path:'manageclasses',

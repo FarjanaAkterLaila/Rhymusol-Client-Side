@@ -8,7 +8,7 @@ const CardHook = () => {
     const { user, loading } = useContext(AuthContext);
     // const [axiosSecure] = AxioSe();
 
-    const token = localStorage.getItem('access-token');
+    // const token = localStorage.getItem('access-token');
     const { refetch, data: card = [] } = useQuery({
         queryKey: ['addcart', user?.email],
         enabled:!loading,

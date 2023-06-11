@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { useForm } from "react-hook-form";
-import CardHook from '../../Hook/CardHook';
+
 import { AuthContext } from '../../Providers/AuthProvider';
 import AxioSe from '../../Hook/AxioSe';
 import Swal from 'sweetalert2';
@@ -28,17 +28,17 @@ const Addclass = () => {
               const imgURL = imgResponse.data.display_url;
               console.log(data,imgURL)
               const {Name, InstructorName,Price,InstactorEmail, AvailableSeats} = data;
-              const newItem = {Name,InstructorName,InstactorEmail,Price: parseFloat(Price), AvailableSeats: parseFloat(AvailableSeats), Image:imgURL}
-              console.log(newItem)
-              axiosSecure.post('/classes', newItem)
+              const newCls = {Name,InstructorName,InstactorEmail,Price: parseFloat(Price), AvailableSeats: parseFloat(AvailableSeats), Image:imgURL}
+              console.log(newCls)
+              axiosSecure.post('/classes', newCls)
               .then(data => {
-                  console.log('after posting new menu item', data.data)
+                  console.log('after posting new class ', data.data)
                   if(data.data.insertedId){
                       reset();
                       Swal.fire({
                           position: 'top-end',
                           icon: 'success',
-                          title: 'Item added successfully',
+                          title: 'Classes added successfully',
                           showConfirmButton: false,
                           timer: 1500
                         })

@@ -6,16 +6,16 @@ import { FaUsers, FaWallet } from "react-icons/fa";
 import { FcHome } from "react-icons/fc";
 import { GiTeacher } from "react-icons/gi";
 import { ImBoxAdd } from "react-icons/im";
-import CardHook from '../Hook/CardHook';
+// import CardHook from '../Hook/CardHook';
 import Admin from '../Hook/Admin';
 import AInstructor from '../Hook/AInstructor';
-import NavBarIteam from '../Components/Shared/NavBar/NavBarIteam';
+// import NavBarIteam from '../Components/Shared/NavBar/NavBarIteam';
 import { useContext } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
 
 
 const Dashboard = () => {
-  const [card] = CardHook();
+  // const [card] = CardHook();
 
   const { user, logOut } = useContext(AuthContext);
   const handleLogOut = () => {
