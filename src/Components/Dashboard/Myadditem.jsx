@@ -6,7 +6,7 @@ import CardHook from "../../Hook/CardHook";
 
 
 const Myadditem = () => {
-    const [card,refetch] = CardHook();
+    const [card , refetch] = CardHook();
    
     const handleDelete = item => {
         Swal.fire({

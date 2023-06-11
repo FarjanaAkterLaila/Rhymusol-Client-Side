@@ -9,13 +9,11 @@ const CardHook = () => {
     // const [axiosSecure] = AxioSe();
 
     const token = localStorage.getItem('access-token');
-    const { refetch, data: cart = [] } = useQuery({
+    const { refetch, data: card = [] } = useQuery({
         queryKey: ['addcart', user?.email],
-        enabled:loading,
+        enabled:!loading,
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/addcard?email=${user?.email}`, { headers: {
-                         authorization: `bearer ${token}`
-                     }})
+            const res = await fetch(`http://localhost:5000/addcard?email=${user?.email}`)
             return res.json();
         },
         // queryFn: async () => {
@@ -23,9 +21,12 @@ const CardHook = () => {
         //     console.log('res from axios', res)
         //     return res.data;
         // },
+        // , { headers: {
+        //     authorization: `bearer ${token}`
+        // }})
     })
 
-    return [cart, refetch]
+    return [card, refetch]
 };
 
 export default CardHook;

@@ -17,6 +17,8 @@ import ManageClasses from "../Components/Dashboard/ManageClasses";
 import ManageUsers from "../Components/Dashboard/ManageUsers";
 import Addclass from "../Components/Dashboard/Addclass";
 import Mycls from "../Components/Dashboard/Mycls";
+import AdminRoute from "./AdminRoute";
+import Instructor from "./Instructor";
   
   export const router = createBrowserRouter([
     {
@@ -61,19 +63,19 @@ import Mycls from "../Components/Dashboard/Mycls";
 },
 {
   path:'manageclasses',
-  element:<ManageClasses/>
+  element:<AdminRoute><ManageClasses/></AdminRoute>
 },
 {
   path:'manageuser',
-  element:<ManageUsers/>
+  element:<AdminRoute><ManageUsers/></AdminRoute>
 },
 {
   path:'addcls',
-  element:<Addclass/>
+  element:<Instructor><Addclass/></Instructor>
 },
 {
   path:'mycls',
-  element:<Mycls/>
+  element:<Instructor><Mycls/></Instructor>
 }
       ]
     }

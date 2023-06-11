@@ -1,21 +1,22 @@
 import React, { useContext } from 'react';
-import Admin from '../Hook/Admin';
-import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
 
-const AdminRoute = ({children}) => {
+import { Navigate, useLocation } from 'react-router-dom';
+import AInstructor from '../Hook/AInstructor';
+
+const Instructor = ({children}) => {
     const { user, loading } = useContext(AuthContext);
-    const [isAdmin, isAdminLoading] = Admin();
+    const [isInstructor , isInstructorLoading] = AInstructor();
     const location = useLocation();
 
-    if(loading || isAdminLoading){
+    if(loading || isInstructorLoading){
         return <progress className="progress w-56"></progress>
     }
 
-    if (user && isAdmin) {
+    if (user && isInstructor) {
         return children;
     }
     return <Navigate to="/login" state={{from: location}} replace></Navigate>
 };
 
-export default AdminRoute;
+export default Instructor;
