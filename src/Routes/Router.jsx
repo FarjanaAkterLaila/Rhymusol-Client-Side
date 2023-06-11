@@ -63,9 +63,9 @@ import Payment from "../Components/Dashboard/Payment/Payment";
   element:<Pay/>
 },
 {
-  path:'payment/:id',
+  path:'payment',
   element:<Payment/>,
-  loader: ({params}) =>fetch(`http://localhost:5000/addcard/${params.id}`)
+
 },
 {
   path:'manageclasses',
