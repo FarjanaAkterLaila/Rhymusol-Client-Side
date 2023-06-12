@@ -11,6 +11,7 @@ const Instuctors = () => {
     return (
    
         <div>
+             <div className="text-center mt-8 font-bold text-orange-700 text-6xl  ">Our Most Popler Instructor</div>
             <div className='grid md:grid-cols-3 md:mx-60 md:pt-32 gap-8'>
                          {
                             cla.map(item => (
