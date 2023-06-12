@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Tooltip } from "react-tooltip";
 //import { Tooltip } from "react-tooltip";
 import { BsFillCartCheckFill } from "react-icons/bs";
@@ -8,7 +8,28 @@ import CardHook from "../../../Hook/CardHook";
 
 
 const NavBarIteam = () => {
-  
+   // use theme from local storage if available or set light theme
+   const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
+
+  // update state on toggle
+  const handleToggle = (e) => {
+    if (e.target.checked) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  };
+
+  // set theme state in localstorage on mount & also update localstorage on state change
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    const localTheme = localStorage.getItem("theme");
+    // add custom data-theme attribute to html tag required to update theme using DaisyUI
+    document.querySelector("html").setAttribute("data-theme", localTheme);
+  }, [theme]);
+
 const [card]= CardHook();
 console.log(card.length)
   const { user, logOut } = useContext(AuthContext);
@@ -97,6 +118,22 @@ return (
         <h1 className="font-bold text-orange-700 text-4xl ">
         Rhy<span className="text-black">Musol</span>
         </h1>
+      </div>
+      <div className="flex-none">
+      <button className="btn btn-square btn-ghost">
+          <label className="swap swap-rotate w-12 h-12">
+            <input
+              type="checkbox"
+              onChange={handleToggle}
+              // show toggle image based on localstorage theme
+              checked={theme === "light" ? false : true}
+            />
+            {/* light theme sun image */}
+            <img src="https://i.ibb.co/vPbpJw1/photo-1588345921523-c2dcdb7f1dcd.jpg" alt="light" className="w-8 h-8 swap-on" />
+            {/* dark theme moon image */}
+            <img src="https://i.ibb.co/mzMZVN1/download-3.jpg"alt="dark" className="w-8 h-8 swap-off" />
+          </label>
+        </button>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navItems}</ul>
