@@ -5,7 +5,7 @@ import { AuthContext } from '../../Providers/AuthProvider';
 const InsCar = () => {
     // const [cla,setCl] = useState([]);
     // useEffect(()=>{
-    //     fetch('https://music-school-server-seven.vercel.app/user')
+    //     fetch('https://music-school-server-farjanaakterlaila.vercel.app/user')
     //     .then(res => res.json())
     //     .then(data => console.log(data))
     // },[])

@@ -16,7 +16,7 @@ const Card = ({item}) => {
         console.log(item);
         if(user && user.email){
             const cardItem = { cardItemId: _id, Image, Name, InstructorName,AvailableSeats,Price, email: user.email}
-            fetch('https://music-school-server-seven.vercel.app/addcard', {
+            fetch('https://music-school-server-farjanaakterlaila.vercel.app/addcard', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

@@ -20,7 +20,7 @@ const Myadditem = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://music-school-server-seven.vercel.app/addcard/${item._id}`, {
+                fetch(`https://music-school-server-farjanaakterlaila.vercel.app/addcard/${item._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

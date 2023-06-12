@@ -71,7 +71,7 @@ import InsCar from "../Components/Instractor/InsCar";
 {
   path:'payment/:id',
   element:<Payment/>,
-  loader:({params})=>fetch(`https://music-school-server-seven.vercel.app/addcard/${params.id}`)
+  loader:({params})=>fetch(`https://music-school-server-farjanaakterlaila.vercel.app/addcard/${params.id}`)
 
 },
 {

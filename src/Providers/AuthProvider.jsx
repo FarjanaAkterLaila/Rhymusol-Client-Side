@@ -46,7 +46,7 @@ const AuthProvider = ({children}) => {
             console.log('logged in user inside auth state observer', loggedUser)
             setUser(loggedUser);
             if(loggedUser){
-                axios.post('https://music-school-server-seven.vercel.app/jwt', {email: loggedUser.email})
+                axios.post('https://music-school-server-farjanaakterlaila.vercel.app/jwt', {email: loggedUser.email})
                 .then(data =>{
                     //  console.log(data.data.token)
                     localStorage.setItem('access-token', data.data.token)

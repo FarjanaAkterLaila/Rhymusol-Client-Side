@@ -31,7 +31,7 @@ const Reg = () => {
                 update(data.name, data.photoURL)
                     .then(() =>{
                         const saveUser = { name: data.name, email: data.email }
-                        fetch('https://music-school-server-seven.vercel.app/user', {
+                        fetch('https://music-school-server-farjanaakterlaila.vercel.app/user', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'

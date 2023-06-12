@@ -7,7 +7,7 @@ import AxioSe from '../../Hook/AxioSe';
 const ManageUsers = () => {
 //     const token = localStorage.getItem('access-token');
 //   const { data: users = [], refetch } = useQuery(['user'], async () => {
-//     const res = await fetch('https://music-school-server-seven.vercel.app/user', { headers: {
+//     const res = await fetch('https://music-school-server-farjanaakterlaila.vercel.app/user', { headers: {
 //         authorization: `bearer ${token}`
 //     }});
 //     return res.json();
@@ -24,7 +24,7 @@ const { data: users = [], refetch } = useQuery(['user'], async () => {
       return; 
     }
 
-    fetch(`https://music-school-server-seven.vercel.app/user/admin/${user._id}`, {
+    fetch(`https://music-school-server-farjanaakterlaila.vercel.app/user/admin/${user._id}`, {
       method: 'PATCH',
     })
       .then((res) => res.json())
@@ -48,7 +48,7 @@ const { data: users = [], refetch } = useQuery(['user'], async () => {
       return; 
     }
 
-    fetch(`https://music-school-server-seven.vercel.app/user/instructor/${user._id}`, {
+    fetch(`https://music-school-server-farjanaakterlaila.vercel.app/user/instructor/${user._id}`, {
       method: 'PATCH',
     })
       .then((res) => res.json())

@@ -4,7 +4,7 @@ import  { useEffect, useState } from 'react';
 const Instuctors = () => {
     const [cla,setCl] = useState([]);
     useEffect(()=>{
-        fetch('https://music-school-server-seven.vercel.app/instractor')
+        fetch('https://music-school-server-farjanaakterlaila.vercel.app/instractor')
         .then(res => res.json())
         .then(data => setCl(data))
     },[])

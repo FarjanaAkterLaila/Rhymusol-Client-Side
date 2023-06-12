@@ -11,7 +11,7 @@ const AInstructor = () => {
     //     queryKey: ['isInstructor', user?.email],
     //     enabled:!isInstructorLoading,
     //     queryFn: async () => {
-    //         const res = await fetch(`https://music-school-server-seven.vercel.app/user/instructor/${user?.email}`)
+    //         const res = await fetch(`https://music-school-server-farjanaakterlaila.vercel.app/user/instructor/${user?.email}`)
     //         return res.json();
     //     },
     // })

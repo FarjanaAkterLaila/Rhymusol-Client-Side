@@ -8,7 +8,7 @@ const AxioSe = () => {
     const navigate = useNavigate(); 
   
     const axiosSecure = axios.create({
-      baseURL: 'https://music-school-server-seven.vercel.app', 
+      baseURL: 'https://music-school-server-farjanaakterlaila.vercel.app', 
     });
   
     useEffect(() => {

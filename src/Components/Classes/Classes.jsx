@@ -5,7 +5,7 @@ import Card from "./Card";
 const Classes = () => {
  const [cla,setCl] = useState([]);
     useEffect(()=>{
-        fetch('https://music-school-server-seven.vercel.app/classes')
+        fetch('https://music-school-server-farjanaakterlaila.vercel.app/classes')
         .then(res => res.json())
         .then(data => setCl(data))
     },[])

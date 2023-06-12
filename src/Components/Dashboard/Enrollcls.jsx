@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 const Enrollcls = () => {
     const [cla,setCl] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/payments')
+        fetch('https://music-school-server-farjanaakterlaila.vercel.app/payments')
         .then(res => res.json())
         .then(data => setCl(data))
     },[])
