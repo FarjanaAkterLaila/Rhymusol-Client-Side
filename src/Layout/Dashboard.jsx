@@ -92,7 +92,7 @@ const [isInstructor] = AInstructor();
           </li>
           <li className="font-bold text-lg">
             {" "}
-            <NavLink to="/alltoys" className={'text-orange-700'}><GiTeacher />Instructors</NavLink>{" "}
+            <NavLink to="/ins" className={'text-orange-700'}><GiTeacher />Instructors</NavLink>{" "}
           </li>
 
           <li className="font-bold text-lg">

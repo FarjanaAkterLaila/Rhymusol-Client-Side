@@ -4,7 +4,7 @@ import  { useEffect, useState } from 'react';
 const Instuctors = () => {
     const [cla,setCl] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/instractor')
+        fetch('https://music-school-server-seven.vercel.app/instractor')
         .then(res => res.json())
         .then(data => setCl(data))
     },[])
@@ -27,7 +27,7 @@ const Instuctors = () => {
      </div></>
                             ))
                         } 
-                        <h1>{cla.length}</h1>
+                      
                     </div>
         </div>
     );

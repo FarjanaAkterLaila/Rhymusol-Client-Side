@@ -21,6 +21,7 @@ import AdminRoute from "./AdminRoute";
 import Instructor from "./Instructor";
 import Payment from "../Components/Dashboard/Payment/Payment";
 import Instuctors from "../Components/Instractor/Instuctors";
+import InsCar from "../Components/Instractor/InsCar";
   
   export const router = createBrowserRouter([
     {
@@ -38,7 +39,7 @@ import Instuctors from "../Components/Instractor/Instuctors";
         },
         {
             path: '/ins',
-            element:<Instuctors></Instuctors>
+            element:<InsCar></InsCar>
         },
         {
           path:'/login',
@@ -70,7 +71,7 @@ import Instuctors from "../Components/Instractor/Instuctors";
 {
   path:'payment/:id',
   element:<Payment/>,
-  loader:({params})=>fetch(`http://localhost:5000/addcard/${params.id}`)
+  loader:({params})=>fetch(`https://music-school-server-seven.vercel.app/addcard/${params.id}`)
 
 },
 {

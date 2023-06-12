@@ -13,7 +13,7 @@ const CardHook = () => {
         queryKey: ['addcart', user?.email],
         enabled:!loading,
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/addcard?email=${user?.email}`)
+            const res = await fetch(`https://music-school-server-seven.vercel.app/addcard?email=${user?.email}`)
             return res.json();
         },
         // queryFn: async () => {

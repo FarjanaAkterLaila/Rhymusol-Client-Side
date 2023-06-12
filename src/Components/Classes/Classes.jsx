@@ -5,7 +5,7 @@ import Card from "./Card";
 const Classes = () => {
  const [cla,setCl] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/classes')
+        fetch('https://music-school-server-seven.vercel.app/classes')
         .then(res => res.json())
         .then(data => setCl(data))
     },[])
@@ -18,7 +18,7 @@ const Classes = () => {
                                 item={item}
                             ></Card>)
                         } 
-                        <h1>{cla.length}</h1>
+                     
                     </div>
         </div>
     );

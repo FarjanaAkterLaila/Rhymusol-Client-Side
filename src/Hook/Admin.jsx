@@ -11,7 +11,7 @@ const Admin = () => {
         // const {  data: isAdmin,isLoading:isAdminLoading } = useQuery({
         //     queryKey: ['isAdmin', user?.email],
         //     queryFn: async () => {
-        //         const res = await fetch(`http://localhost:5000/user/admin/${user?.email}`, { headers: {
+        //         const res = await fetch(`https://music-school-server-seven.vercel.app/user/admin/${user?.email}`, { headers: {
         //                      authorization: `bearer ${token}`
         //                  }})
         //                  console.log("is admin",res)

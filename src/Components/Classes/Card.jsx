@@ -16,7 +16,7 @@ const Card = ({item}) => {
         console.log(item);
         if(user && user.email){
             const cardItem = { cardItemId: _id, Image, Name, InstructorName,AvailableSeats,Price, email: user.email}
-            fetch('http://localhost:5000/addcard', {
+            fetch('https://music-school-server-seven.vercel.app/addcard', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -59,7 +59,7 @@ const Card = ({item}) => {
     }
     const {_id,Image, Name, InstructorName,AvailableSeats,Price} = item;
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className={`card w-96  shadow-xl ${AvailableSeats=== 0 ? 'bg-red-400': 'bg-base-100'}`}>
             <figure><img className="w-full h-52" src={Image} alt="Shoes" /></figure>
             <p className="absolute rounded-xl right-0 mr-4 mt-4 p-1 bg-orange-700 text-white">${Price}</p>
             <div className="card-body flex flex-col items-start">
