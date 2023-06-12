@@ -9,6 +9,8 @@ const Enrollcls = () => {
         .then(res => res.json())
         .then(data => setCl(data))
     },[])
+    
+      
     return (
         <div className="w-full">
         
