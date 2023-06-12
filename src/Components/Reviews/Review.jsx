@@ -1,4 +1,5 @@
 import React from 'react';
+import { Fade } from 'react-awesome-reveal';
 import { FaStar } from 'react-icons/fa';
 const reviews = [
     {
@@ -40,7 +41,7 @@ const Review = () => {
               <img src={review.image} alt={review.name} className="rounded-full w-20 h-20 object-cover mb-4 mx-auto" />
               <div className="text-center">
                 <h3 className="text-lg font-semibold">{review.name}</h3>
-                <p className="text-gray-600">{review.review}</p>
+                <Fade><p className="text-gray-600">{review.review}</p> </Fade>
                 <div className="flex items-center justify-center mt-2">
                   <span className="font-semibold mr-1"></span>
                   {Array.from({ length: review.rating }, (_, index) => (
