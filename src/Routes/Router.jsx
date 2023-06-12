@@ -20,6 +20,7 @@ import Mycls from "../Components/Dashboard/Mycls";
 import AdminRoute from "./AdminRoute";
 import Instructor from "./Instructor";
 import Payment from "../Components/Dashboard/Payment/Payment";
+import Instuctors from "../Components/Instractor/Instuctors";
   
   export const router = createBrowserRouter([
     {
@@ -34,6 +35,10 @@ import Payment from "../Components/Dashboard/Payment/Payment";
         {
             path: '/classes',
             element:<Classes></Classes>
+        },
+        {
+            path: '/ins',
+            element:<Instuctors></Instuctors>
         },
         {
           path:'/login',

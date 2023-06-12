@@ -25,7 +25,7 @@ const navItems = (
     </li>
     <li className="font-bold text-lg">
       {" "}
-      <Link to="/alltoys">Instructors</Link>{" "}
+      <Link to="/ins">Instructors</Link>{" "}
     </li>
 
     <li className="font-bold text-lg">

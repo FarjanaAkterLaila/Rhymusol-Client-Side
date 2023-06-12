@@ -60,7 +60,7 @@ const Card = ({item}) => {
     const {_id,Image, Name, InstructorName,AvailableSeats,Price} = item;
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
-            <figure><img src={Image} alt="Shoes" /></figure>
+            <figure><img className="w-full h-52" src={Image} alt="Shoes" /></figure>
             <p className="absolute rounded-xl right-0 mr-4 mt-4 p-1 bg-orange-700 text-white">${Price}</p>
             <div className="card-body flex flex-col items-start">
                 <h2 className="card-title">{Name}</h2>
