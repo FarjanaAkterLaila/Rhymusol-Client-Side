@@ -66,7 +66,7 @@ const navItems = (
 );
 return (
   <div>
-  <div className=" navbar z-10 fixed bg-opacity-70  bg-white text-black ">
+  <div className=" navbar z-10 lg:fixed bg-opacity-70  bg-white text-black ">
     <div className=" max-w-7xl mx-auto navbar h-20 mb-0">
       <div className="navbar-start">
         <div className="dropdown">
@@ -88,7 +88,7 @@ return (
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-compact static z-50 dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             {navItems}
           </ul>
