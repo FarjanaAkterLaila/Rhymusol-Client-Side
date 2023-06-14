@@ -5,6 +5,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import 'animate.css';
 import { AuthContext } from "../../Providers/AuthProvider";
 import CardHook from "../../Hook/CardHook";
+import Admin from "../../Hook/Admin";
+import AInstructor from "../../Hook/AInstructor";
 
 
 const Card = ({item}) => {
@@ -12,6 +14,7 @@ const Card = ({item}) => {
     const navigate = useNavigate();
     const location =useLocation();
     const[,refetch] = CardHook();
+      
     const handleAddToCart = item => {
         console.log(item);
         if(user && user.email){
@@ -67,7 +70,7 @@ const Card = ({item}) => {
                 <h2 className="card-title">Instructor Name: {InstructorName}</h2>
                 <p className="card-title">Available Seats: {AvailableSeats}</p>
                 <div className="card-actions justify-end mx-auto">
-                    <button onClick={() => handleAddToCart(item)} className="btn btn-error bg-slate-100 border-0 border-b-4 border-orange-400 mt-4">Add to Cart</button>
+                    <button onClick={() => handleAddToCart(item)} className="btn btn-error bg-slate-100 border-0 border-b-4 border-orange-400 mt-4"  disabled={AvailableSeats === 0}>Add to Cart</button>
                 </div>
             </div>
         </div>

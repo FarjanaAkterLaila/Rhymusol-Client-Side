@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import AxioSe from '../../Hook/AxioSe';
 import { useQuery } from '@tanstack/react-query';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const Enrollcls = () => {
     const [cla,setCl] = useState([]);
@@ -9,13 +10,13 @@ const Enrollcls = () => {
         .then(res => res.json())
         .then(data => setCl(data))
     },[])
-    
-      
+    const { user } = useContext(AuthContext);
+    const filteredCla = cla.filter(item => item.email === user?.email);
     return (
         <div className="w-full">
         
         <div className="uppercase font-semibold h-[60px] flex justify-evenly items-center">
-            <h3 className="text-3xl">Total Selected Classes: {cla.length}</h3>
+            <h3 className="text-3xl">Total Selected Classes: {filteredCla.length}</h3>
          
            
         </div>
@@ -36,7 +37,7 @@ const Enrollcls = () => {
                 </thead>
                 <tbody>
                     {
-                       cla.map((item, index) => <tr
+                      filteredCla.map((item, index) => <tr
                             key={item._id}
                         >
                             <td>

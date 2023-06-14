@@ -13,7 +13,7 @@ const Reg = () => {
     const { createUser, update } = useContext(AuthContext);
     const navigate = useNavigate();
     console.log("login page location", location);
-    const from =  location.state?.from?.state?.from?.pathname || "/";
+    const from =  location.state?.from?.pathname || "/";
  console.log(from)
     const [error, setError] = useState('');
     const password = useRef({});

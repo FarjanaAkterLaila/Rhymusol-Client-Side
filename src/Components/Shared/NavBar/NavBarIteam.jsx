@@ -3,7 +3,7 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 import { useContext, useEffect, useState } from "react";
 import { Tooltip } from "react-tooltip";
 //import { Tooltip } from "react-tooltip";
-import { BsFillCartCheckFill } from "react-icons/bs";
+import { RxDashboard } from "react-icons/rx";
 import CardHook from "../../../Hook/CardHook";
 
 
@@ -52,13 +52,30 @@ const navItems = (
     <li className="font-bold text-lg">
       <Link to="/classes">Classes</Link>
     </li>
-    
+    <li>
+    <div className="flex-none">
+      <button className="btn btn-square btn-ghost">
+          <label className="swap swap-rotate w-12 h-12">
+            <input
+              type="checkbox"
+              onChange={handleToggle}
+              // show toggle image based on localstorage theme
+              checked={theme === "light" ? false : true}
+            />
+            {/* light theme sun image */}
+            <img src="https://i.ibb.co/vPbpJw1/photo-1588345921523-c2dcdb7f1dcd.jpg" alt="light" className="w-8 h-8 swap-on" />
+            {/* dark theme moon image */}
+            <img src="https://i.ibb.co/mzMZVN1/download-3.jpg"alt="dark" className="w-8 h-8 swap-off" />
+          </label>
+        </button>
+      </div>
+    </li>
     
     { user?.email ?  <>
       <li className="font-bold">
-      <Link to="/dashboard"><BsFillCartCheckFill style={{fontSize:'2rem'}}>
+      <Link to="/dashboard"><RxDashboard style={{fontSize:'2rem'}}>
         
-        </BsFillCartCheckFill><div className="bg-orange-300 text-black text-lg rounded-lg px-2">+{card?.length || 0}</div></Link>
+        </RxDashboard><div className="bg-orange-300 text-black text-lg rounded-lg px-2">+{card?.length || 0}</div></Link>
     </li>
    
           
@@ -119,7 +136,7 @@ return (
         Rhy<span className="text-black">Musol</span>
         </h1>
       </div>
-      <div className="flex-none">
+      {/* <div className="flex-none">
       <button className="btn btn-square btn-ghost">
           <label className="swap swap-rotate w-12 h-12">
             <input
@@ -127,20 +144,20 @@ return (
               onChange={handleToggle}
               // show toggle image based on localstorage theme
               checked={theme === "light" ? false : true}
-            />
+            /> */}
             {/* light theme sun image */}
-            <img src="https://i.ibb.co/vPbpJw1/photo-1588345921523-c2dcdb7f1dcd.jpg" alt="light" className="w-8 h-8 swap-on" />
+            {/* <img src="https://i.ibb.co/vPbpJw1/photo-1588345921523-c2dcdb7f1dcd.jpg" alt="light" className="w-8 h-8 swap-on" /> */}
             {/* dark theme moon image */}
-            <img src="https://i.ibb.co/mzMZVN1/download-3.jpg"alt="dark" className="w-8 h-8 swap-off" />
+            {/* <img src="https://i.ibb.co/mzMZVN1/download-3.jpg"alt="dark" className="w-8 h-8 swap-off" />
           </label>
         </button>
-      </div>
+      </div> */}
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navItems}</ul>
  
       </div>
       {user && (
-              <Tooltip anchorSelect="#clickable" className='text-dark bg-drak' place="top-start">
+              <Tooltip anchorSelect="#clickable" className='static z-50 text-dark bg-drak' place="top-start">
               <button className='text-dark bg-drak border-0'>{user.displayName}</button>
             </Tooltip>
               

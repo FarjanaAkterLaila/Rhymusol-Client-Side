@@ -1,9 +1,78 @@
 import { FaTrashAlt } from "react-icons/fa";
 import Class from "../../Hook/Class";
+import Swal from "sweetalert2";
+import { useState } from "react";
+import CardHook from "../../Hook/CardHook";
+import AxioSe from "../../Hook/AxioSe";
+import { useQuery } from "@tanstack/react-query";
 
 
 const ManageClasses = () => {
     const [classes]=Class();
+   
+    const [axiosSecure] = AxioSe();
+    const { data: user = [], refetch } = useQuery(['classes'], async () => {
+        const res = await axiosSecure.get('/classes')
+        return res.data;
+    })
+
+    const [selectedUsers, setSelectedUsers] = useState([]); 
+    const [feedback, setFeedback] = useState('');
+    const [showModal, setShowModal] = useState(false);
+    const [currentItem, setCurrentItem] = useState(null);
+    const handleMakeApproved = (user) => {
+      if (user.status === 'Approved' || selectedUsers.includes(user._id)) {
+        return; 
+      }
+  
+      fetch(` https://music-school-server-farjanaakterlaila.vercel.app/classes/approved/${user._id}`, {
+        method: 'PATCH',
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.modifiedCount) {
+            refetch()
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: `${user.Name} is  Approved!`,
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        });
+    };
+    const handleMakeDeny = (user) => {
+      if (user.status === 'Deny' || selectedUsers.includes(user._id)) {
+        return; 
+      }
+  
+      fetch(` https://music-school-server-farjanaakterlaila.vercel.app/classes/deny/${user._id}`, {
+        method: 'PATCH',
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.modifiedCount) {
+            refetch();
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: `${user.Name} is Deny!`,
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        });
+    };
+    const UserSelection = (user) => {
+      if (selectedUsers.includes(user._id)) {
+        setSelectedUsers(selectedUsers.filter((id) => id !== user._id)); 
+      } else {
+        setSelectedUsers([...selectedUsers, user._id]); 
+      }
+    };
    // const handleDelete = item => {
         // Swal.fire({
         //     title: 'Are you sure?',
@@ -32,6 +101,50 @@ const ManageClasses = () => {
         //     }
         // })
     //}
+
+    const handleSendFeedback = (item) => {
+      if (!feedback) {
+        return;
+      }
+    
+      fetch(`https://music-school-server-farjanaakterlaila.vercel.app/classes/feedback/${item._id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          feedback: feedback,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.message === "Feedback saved successfully.") {
+            refetch();
+            setShowModal(false);
+            setFeedback('');
+           
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: "Feedback sent successfully!",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            // Close the feedback modal
+          }
+        });
+    };
+   
+    const openModal = (item) => {
+      setCurrentItem(item);
+      setShowModal(true);
+    };
+  
+    const closeModal = () => {
+      setCurrentItem(null);
+      setShowModal(false);
+    };
     return (
        
            <div className='w-full px-10 '>
@@ -84,33 +197,41 @@ const ManageClasses = () => {
                         
                         <button className="btn btn-error btn-sm">Deny</button> */}
                          <td>
-                  {item.Status === 'Approve' ? (
-                    'Approve'
+                  {item.status === 'Approved' ? (
+                    'Approved'
                   ) : (
                     <button
-                    //   onClick={() => handleMakeAdmin(item)}
+                       onClick={() => handleMakeApproved(item)}
                       className="btn btn-ghost bg-orange-600 text-white mt-2 p-2"
-                    //   disabled={selectedUsers.includes(item._id) || item.role === 'Instructor'}
+                       disabled={selectedUsers.includes(item._id) || item.status === 'Deny'}
                     >
                      Approve
                     </button>
                   )}
-                  {item.Status === 'Deny' ? (
+                  {item.status === 'Deny' ? (
                     'Deny'
                   ) : (
                     <button
-                    //   onClick={() => handleMakeInstr(item)}
+                       onClick={() => handleMakeDeny(item)}
                       className="mt-4 px-6 btn btn-ghost bg-orange-600 text-white"
-                    //   disabled={selectedUsers.includes(item._id) || item.role === 'Admin'}
+                       disabled={selectedUsers.includes(item._id) || item.status === 'Approved'}
                     >
                       Deny
                     </button>
                   )}
                 </td>
                            
-                            <td>
-                            <button className="btn btn-error btn-lg ">send feedback</button>
-                            </td>
+                <td>
+                  <button
+                    onClick={() => openModal(item)}
+                    className="btn btn-error btn-lg"
+                    disabled={selectedUsers.includes(item._id)
+                    
+                    }
+                  >
+                    Send Feedback
+                  </button>
+                </td>
                            
                         </tr>
                         )
@@ -120,8 +241,31 @@ const ManageClasses = () => {
                 </tbody>
             </table>
         </div>
+        {showModal && currentItem && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+          <div className="bg-white rounded-lg p-6">
+            <h2 className="text-xl font-semibold mb-4">Send Feedback</h2>
+            <textarea
+              value={feedback}
+              onChange={(e) => setFeedback(e.target.value)}
+              placeholder="Enter feedback"
+              className="w-full p-2 border border-gray-300 rounded mb-4"
+            ></textarea>
+            <div className="flex justify-end">
+              <button onClick={closeModal} className="btn btn-secondary mr-2">
+                Cancel
+              </button>
+              <button onClick={() => handleSendFeedback(currentItem)} className="btn btn-primary">
+                Send Feedback
+              </button>
+         
+            </div>
+          </div>
+        </div>
+      )}
         </div>
     );
 };
 
 export default ManageClasses;
+

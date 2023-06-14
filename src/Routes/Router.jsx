@@ -22,6 +22,7 @@ import Instructor from "./Instructor";
 import Payment from "../Components/Dashboard/Payment/Payment";
 import Instuctors from "../Components/Instractor/Instuctors";
 import InsCar from "../Components/Instractor/InsCar";
+import Updatecls from "../Components/Dashboard/Update/Updatecls";
   
   export const router = createBrowserRouter([
     {
@@ -74,6 +75,7 @@ import InsCar from "../Components/Instractor/InsCar";
   loader:({params})=>fetch(`https://music-school-server-farjanaakterlaila.vercel.app/addcard/${params.id}`)
 
 },
+
 {
   path:'manageclasses',
   element:<AdminRoute><ManageClasses/></AdminRoute>
@@ -84,12 +86,19 @@ import InsCar from "../Components/Instractor/InsCar";
 },
 {
   path:'addcls',
-  element:<Instructor><Addclass/></Instructor>
+  element:<Instructor><Addclass/></Instructor>,
 },
+
 {
   path:'mycls',
   element:<Instructor><Mycls/></Instructor>
-}
+
+},
+{
+  path:'update/:id',
+  element:<Updatecls></Updatecls>,
+  loader:({params})=>fetch(`https://music-school-server-farjanaakterlaila.vercel.app/dashboard/update/${params.id}`)
+        }
       ]
     }
   ]);
