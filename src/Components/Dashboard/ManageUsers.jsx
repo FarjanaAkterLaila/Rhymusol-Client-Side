@@ -5,13 +5,7 @@ import Swal from 'sweetalert2';
 import AxioSe from '../../Hook/AxioSe';
 
 const ManageUsers = () => {
-//     const token = localStorage.getItem('access-token');
-//   const { data: users = [], refetch } = useQuery(['user'], async () => {
-//     const res = await fetch('https://music-school-server-farjanaakterlaila.vercel.app/user', { headers: {
-//         authorization: `bearer ${token}`
-//     }});
-//     return res.json();
-//   });
+
 const [axiosSecure] = AxioSe();
 const { data: users = [], refetch } = useQuery(['user'], async () => {
     const res = await axiosSecure.get('/user')
@@ -67,10 +61,7 @@ const { data: users = [], refetch } = useQuery(['user'], async () => {
       });
   };
 
-  const handleDelete = (item) => {
-    console.log(item)
-    // Implement the delete functionality
-  };
+
 
   const UserSelection = (user) => {
     if (selectedUsers.includes(user._id)) {
@@ -93,7 +84,7 @@ const { data: users = [], refetch } = useQuery(['user'], async () => {
               <th>Name</th>
               <th>Email</th>
               <th>Role</th>
-              <th>Action</th>
+              
             </tr>
           </thead>
           <tbody className="text-center">
@@ -126,14 +117,7 @@ const { data: users = [], refetch } = useQuery(['user'], async () => {
                     </button>
                   )}
                 </td>
-                <td>
-                  <button
-                    onClick={() => handleDelete(item)}
-                    className="btn btn-ghost bg-orange-600 text-white"
-                  >
-                    <FaTrashAlt />
-                  </button>
-                </td>
+                
               </tr>
             ))}
           </tbody>

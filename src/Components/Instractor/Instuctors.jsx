@@ -20,8 +20,8 @@ const Instuctors = () => {
             <figure><img className="w-full h-52"src={item.img} alt="Shoes" /></figure>
           
             <div className="card-body flex flex-col items-start">
-                <h2 className="card-title">{item.name}</h2>
-                <h2 className="card-title">Instructor Name: {item.email}</h2>
+                <h2 className="card-title">Instructor Name:{item.name}</h2>
+                <h2 className="card-title">Instructor Email: {item.email}</h2>
                 
              
             </div>

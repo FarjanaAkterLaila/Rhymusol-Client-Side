@@ -109,34 +109,8 @@ const navigate = useNavigate()
                   )}
                 </td>
                             <td >
-                            {/* {selectedItem && selectedItem._id === item._id ? (
-                    <form onSubmit={updateInformation}>
-                      <input
-                        type="text"
-                        name="Name"
-                        value={selectedItem.Name}
-                        onChange={handleInputChange}
-                      />
-                      <input
-                        type="text"
-                        name="InstructorName"
-                        value={selectedItem.InstructorName}
-                        onChange={handleInputChange}
-                      />
-                      <input
-                        type="text"
-                        name="Price"
-                        value={selectedItem.Price}
-                        onChange={handleInputChange}
-                      />
-                      <button type="submit">Save</button>
-                    </form>
-                  ) : (
-                    <button onClick={() => handleUpdateClick(item)}>
-                      Update
-                    </button>
-                  )} */}
-            <button onClick={()=>navigate(`/dashboard/update/${item._id}`)}>Upadte</button>
+                            
+            <button className="btn btn-error"onClick={()=>navigate(`/dashboard/update/${item._id}`)}>Update</button>
                             </td>
                             
                             

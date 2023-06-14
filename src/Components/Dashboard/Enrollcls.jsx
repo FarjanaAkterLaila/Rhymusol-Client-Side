@@ -16,7 +16,7 @@ const Enrollcls = () => {
         <div className="w-full">
         
         <div className="uppercase font-semibold h-[60px] flex justify-evenly items-center">
-            <h3 className="text-3xl">Total Selected Classes: {filteredCla.length}</h3>
+            <h3 className="text-3xl">Confirme Classes</h3>
          
            
         </div>

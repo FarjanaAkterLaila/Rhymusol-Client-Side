@@ -17,8 +17,14 @@ const Card = ({item}) => {
       
     const handleAddToCart = item => {
         console.log(item);
+        console.log(user.role)
         if(user && user.email){
-            const cardItem = { cardItemId: _id, Image, Name, InstructorName,AvailableSeats,Price, email: user.email}
+            const cardItem = { cardItemId: _id, Image, Name, InstructorName,AvailableSeats,Price, email: user.email ,role: user.role}
+            if (user.role === 'Admin' || user.role === 'Instructor') {
+               
+             return;
+              }
+         
             fetch('https://music-school-server-farjanaakterlaila.vercel.app/addcard', {
                 method: 'POST',
                 headers: {
@@ -45,9 +51,10 @@ const Card = ({item}) => {
                 }
             })
         }
+    
         else{
             Swal.fire({
-                title: 'Please login to order the food',
+                title: 'Please login',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -70,7 +77,9 @@ const Card = ({item}) => {
                 <h2 className="card-title">Instructor Name: {InstructorName}</h2>
                 <p className="card-title">Available Seats: {AvailableSeats}</p>
                 <div className="card-actions justify-end mx-auto">
-                    <button onClick={() => handleAddToCart(item)} className="btn btn-error bg-slate-100 border-0 border-b-4 border-orange-400 mt-4"  disabled={AvailableSeats === 0}>Add to Cart</button>
+                <button onClick={() => handleAddToCart(item)} className={`btn btn-error bg-slate-100 border-0 border-b-4 border-orange-400 mt-4 ${user && (user.role === 'Admin' || user.role === 'Instructor') ? 'cursor-not-allowed opacity-50' : ''}`} disabled={AvailableSeats === 0 || (user && (user.role === 'Admin' || user.role === 'Instructor'))}>
+            Add to Enrolled
+          </button>
                 </div>
             </div>
         </div>
