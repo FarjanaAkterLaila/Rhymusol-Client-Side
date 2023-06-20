@@ -33,8 +33,8 @@ const reviews = [
   ];
 const Review = () => {
     return (
-        <div className="review-section p-4 bg-gray-100">
-        <h2 className="text-4xl font-bold mb-4 text-center  text-orange-700">Student's Reviews</h2>
+        <div className="review-section p-4 bg-gray-200">
+        <h2 className="text-center pt-8 font-bold text-orange-700 text-6xl mb-6">Student's Reviews</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {reviews.map(review => (
             <div key={review.id} className="bg-white rounded-lg shadow-md p-4">
